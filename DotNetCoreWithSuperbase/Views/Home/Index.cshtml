@@ -1,0 +1,41 @@
+﻿@model IList<Student>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <h2>Student List</h2>
+    <table class="table table-bordered" id="example">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Registration ID</th>
+                <th>Student Name</th>
+                <th>Father Name</th>
+                <th>Mother's Name</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.id</td>
+                    <td>@student.RegId</td>
+                    <td>@student.StudentName</td>
+                    <td>@student.FatherName</td>
+                    <td>@student.MothersName</td>
+                    <td>
+                        <img class="img-fluid" src="@student.Image" height="100" width="100" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        new DataTable('#example');
+    </script>
+}
