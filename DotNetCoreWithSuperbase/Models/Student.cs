@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Postgrest.Models;
+using System.ComponentModel.DataAnnotations;
 
+using Postgrest.Models;
 namespace DotNetCoreWithSuperbase.Models
 {
-    public class Student
+    public class Student:BaseModel
     {
         [Key]
         public int id { get; set; }

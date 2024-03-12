@@ -1,5 +1,6 @@
 using DotNetCoreWithSuperbase.Interface;
 using DotNetCoreWithSuperbase;
+using DotNetCoreWithSuperbase.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.Configure<SuperbaseConfig>(builder.Configuration.GetSection("Su
 
 // Add HttpClient with SuperbaseService
 builder.Services.AddHttpClient<ISuperbaseService, SuperbaseService>();
+builder.Services.AddScoped<SupabaseConnection>();
 
 var app = builder.Build();
 
