@@ -2,11 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 
 using Postgrest.Models;
+using Postgrest.Attributes;
 namespace DotNetCoreWithSuperbase.Models
 {
     public class Student:BaseModel
     {
-        [Key]
+        [PrimaryKey]
         public int id { get; set; }
         public string RegId { get; set; }
         public string StudentName { get; set; }

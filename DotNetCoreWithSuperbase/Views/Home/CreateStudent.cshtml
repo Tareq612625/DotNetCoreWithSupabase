@@ -12,11 +12,11 @@
     <div class="col-md-4">
         <form asp-action="CreateStudent">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+       @*      <div class="form-group">
                 <label asp-for="id" class="control-label"></label>
                 <input asp-for="id" class="form-control" />
                 <span asp-validation-for="id" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <label asp-for="RegId" class="control-label"></label>
                 <input asp-for="RegId" class="form-control" />
@@ -42,16 +42,7 @@
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BaseUrl" class="control-label"></label>
-                <input asp-for="BaseUrl" class="form-control" />
-                <span asp-validation-for="BaseUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TableName" class="control-label"></label>
-                <input asp-for="TableName" class="form-control" />
-                <span asp-validation-for="TableName" class="text-danger"></span>
-            </div>
+          
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

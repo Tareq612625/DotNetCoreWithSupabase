@@ -1,4 +1,5 @@
 ﻿using DotNetCoreWithSuperbase.Models;
+using Newtonsoft.Json;
 
 namespace DotNetCoreWithSuperbase.Service
 {
@@ -17,10 +18,10 @@ namespace DotNetCoreWithSuperbase.Service
 
             _supabase = new Supabase.Client(url, key, options);
         }
-        public async Task InitializeAsync()
-        {
-            await _supabase.InitializeAsync();
-        }
+        //public async Task InitializeAsync()
+        //{
+        //    await _supabase.InitializeAsync();
+        //}
         public async Task<List<Student>> GetStudentListDataAsync()
         {
             var result = await _supabase.From<Student>().Get();
@@ -30,6 +31,13 @@ namespace DotNetCoreWithSuperbase.Service
         public async void CreateStudent(Student obj)
         {
             await _supabase.From<Student>().Insert(obj);
+        }
+        public async Task<List<Student>> GetStudentListbyFunction()
+        {
+            var response = await _supabase.Rpc("select_students", null);
+            string jsonContent = response.Content;
+            List<Student> students = JsonConvert.DeserializeObject<List<Student>>(jsonContent);
+            return students;
         }
     }
 }

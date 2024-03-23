@@ -22,7 +22,9 @@ namespace DotNetCoreWithSuperbase.Controllers
         public async Task<IActionResult> Index()
         {
             var list = await _supabaseConnection.GetStudentListDataAsync();
-            return View(list);
+            var list1 = await _supabaseConnection.GetStudentListbyFunction();
+
+            return View(list1);
         }
         [HttpGet]
         public async Task<IActionResult> CreateStudent()
