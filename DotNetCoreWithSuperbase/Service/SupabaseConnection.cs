@@ -8,6 +8,7 @@ namespace DotNetCoreWithSuperbase.Service
         private readonly Supabase.Client _supabase;
         public SupabaseConnection()
         {
+            //Supabase Credential  
             var url = "https://lbwulueormbjigcgubbc.supabase.co";
             var key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxid3VsdWVvcm1iamlnY2d1YmJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk3MTM1MTcsImV4cCI6MjAyNTI4OTUxN30.uJh7kLMJvfk1nz9g3HiC_TAAqujPZCwvO9BlnBnvqIo";
 
@@ -18,20 +19,19 @@ namespace DotNetCoreWithSuperbase.Service
 
             _supabase = new Supabase.Client(url, key, options);
         }
-        //public async Task InitializeAsync()
-        //{
-        //    await _supabase.InitializeAsync();
-        //}
+        //Supabase Get Data
         public async Task<List<Student>> GetStudentListDataAsync()
         {
             var result = await _supabase.From<Student>().Get();
             var students = result.Models.ToList();
             return students;
         }
+        //Supabase Data Insert
         public async void CreateStudent(Student obj)
         {
             await _supabase.From<Student>().Insert(obj);
         }
+        //Supabase Function Call 
         public async Task<List<Student>> GetStudentListbyFunction()
         {
             var response = await _supabase.Rpc("select_students", null);
